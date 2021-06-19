@@ -1,0 +1,16 @@
+{
+    "name": "Patient",
+    "columns": {
+        "id": {
+            "type": "int",
+            "primary": true,
+            "generated": true
+        },
+        "nom": {
+            "type": "varchar"
+        },
+        "prenom": {
+            "type": "varchar"
+        }
+    }
+}

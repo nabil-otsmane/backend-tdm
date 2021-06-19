@@ -1,0 +1,31 @@
+{
+    "name": "Medecin",
+    "columns": {
+        "id": {
+            "type": "int",
+            "primary": true,
+            "generated": true
+        },
+        "nom": {
+            "type": "varchar"
+        },
+        "prenom": {
+            "type": "varchar"
+        },
+        "numTele": {
+            "type": "varchar"
+        },
+        "idSpec": {
+            "type": "int"
+        },
+        "lat": {
+            "type": "float"
+        },
+        "long": {
+            "type": "float"
+        },
+        "photo": {
+            "type": "varchar"
+        }
+    }
+}

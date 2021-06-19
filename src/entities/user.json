@@ -1,0 +1,16 @@
+{
+    "name": "User",
+    "columns": {
+        "id": {
+            "type": "int",
+            "primary": true,
+            "generated": true 
+        },
+        "numTele": {
+            "type": "varchar"
+        },
+        "mdp": {
+            "type": "varchar"
+        }
+    }
+}

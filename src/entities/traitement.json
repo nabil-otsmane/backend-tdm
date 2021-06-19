@@ -1,0 +1,22 @@
+{
+    "name": "Traitement",
+    "columns": {
+        "id": {
+            "type": "int",
+            "primary": true,
+            "generated": true
+        },
+        "dateDebut": {
+            "type": "timestamp"
+        },
+        "dateFin": {
+            "type": "timestamp"
+        },
+        "idMedecin": {
+            "type": "int"
+        },
+        "idPatient": {
+            "type": "int"
+        }
+    }
+}

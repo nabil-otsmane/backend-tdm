@@ -1,0 +1,19 @@
+{
+    "name": "RendezVous",
+    "columns": {
+        "id": {
+            "type": "int",
+            "primary": true,
+            "generated": true
+        },
+        "date": {
+            "type": "timestamp"
+        },
+        "idPatient": {
+            "type": "int"
+        },
+        "idMedecin": {
+            "type": "int"
+        }
+    }
+}

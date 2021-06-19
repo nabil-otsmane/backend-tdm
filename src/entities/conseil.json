@@ -1,0 +1,22 @@
+{
+    "name": "Conseil",
+    "columns": {
+        "id": {
+            "type": "int",
+            "primary": true,
+            "generated": true
+        },
+        "text": {
+            "type": "text"
+        },
+        "idPatient": {
+            "type": "int"
+        },
+        "idMedecin": {
+            "type": "int"
+        },
+        "date": {
+            "type": "timestamp"
+        }
+    }
+}
