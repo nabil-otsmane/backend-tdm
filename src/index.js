@@ -12,9 +12,9 @@ app.get('/', (_, res) => {
 })
 
 createConnection({
-    "type": "postgres", 
+    "type": "mysql", 
     "host": "localhost", 
-    "port": 5432, 
+    "port": 3306, 
     "username": "nabil", 
     "password": "heyheyboi", 
     "database": "ProjetMobile",
