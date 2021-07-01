@@ -76,7 +76,7 @@ function login(req, res) {
             const token = generateToken(user[0])
 
             res.header("auth", token)
-            res.send(success("login success"))
+            res.send(success("login success", user[0]))
         }
     })
     .catch(err => {
