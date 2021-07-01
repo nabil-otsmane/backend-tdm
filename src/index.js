@@ -7,6 +7,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+app.use(express.static('public'))
+
 app.get('/', (_, res) => {
     res.send({ message: "server is up and running." })
 })
