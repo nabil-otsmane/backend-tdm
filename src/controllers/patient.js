@@ -36,7 +36,7 @@ function getRendezVousPatient(req, res) {
 }
 
 function getTraitementPatient(req, res) {
-    Traitement.find({ idPatient: req.params.id })
+    Traitement.find({ idPatient: req.params.id, relations: ["listMedicament"] })
     .then(traitements => {
         res.send(success("traitements de patient " + req.params.id, traitements))
     })

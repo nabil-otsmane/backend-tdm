@@ -4,7 +4,7 @@ const { error, success } = require("../lib/response")
 const Traitement = getRepository('Traitement')
 
 function getTraitements(req, res) {
-    Traitement.find()
+    Traitement.find({ relations: ["listMedicament"] })
     .then(traitements => {
         res.send(success("liste des traitements", traitements))
     })

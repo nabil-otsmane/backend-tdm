@@ -9,6 +9,9 @@
         "text": {
             "type": "text"
         },
+        "reponse": {
+            "type": "text"
+        },
         "idPatient": {
             "type": "int"
         },

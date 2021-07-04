@@ -2,6 +2,8 @@ const { getRepository } = require("typeorm")
 const { error, success } = require("../lib/response")
 
 const Medecin = getRepository('Medecin')
+const RendezVous = getRepository('RendezVous')
+const traitement = getRepository('Traitement')
 
 function getMedecins(req, res) {
     Medecin.find()
@@ -20,6 +22,28 @@ function getMedecin(req, res) {
     })
     .catch(err => {
         res.send(error(err.message));
+    })
+}
+
+function getTraitementMedecin(req, res) {
+    const id = req.params.id
+    traitement.find({ idMedecin: id })
+    .then(e => {
+        res.send(success("listes des traitements du medecin " + id, e))
+    })
+    .catch(err => {
+        res.send(error(err.message))
+    })
+}
+
+function getRendezVousMedecin(req, res) {
+    const id = req.params.id
+    RendezVous.find({ idMedecin: id })
+    .then(e => {
+        res.send(success("listes des rendez-vous du medecin " + id, e))
+    })
+    .catch(err => {
+        res.send(error(err.message))
     })
 }
 
@@ -59,5 +83,7 @@ module.exports = {
     getMedecin,
     postMedecin,
     deleteMedecin,
-    putMedecin
+    putMedecin,
+    getRendezVousMedecin,
+    getTraitementMedecin
 }
