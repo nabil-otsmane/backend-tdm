@@ -26,7 +26,7 @@ function getPatient(req, res) {
 }
 
 function getRendezVousPatient(req, res) {
-    RendezVous.find({ idPatient: req.params.id })
+    RendezVous.find({ where: { idPatient: req.params.id/*, date: LessThanOrEqual(new Date())*/ } })
     .then(rvs => {
         res.send(success("rendez-vous de patient " + req.params.id, rvs))
     })
@@ -36,7 +36,7 @@ function getRendezVousPatient(req, res) {
 }
 
 function getTraitementPatient(req, res) {
-    Traitement.find({ idPatient: req.params.id, dateFin: MoreThanOrEqual(new Date()), relations: ["listMedicament"] })
+    Traitement.find({ where: {idPatient: req.params.id, dateFin: MoreThanOrEqual(new Date())}, relations: ["listMedicament"] })
     .then(traitements => {
         res.send(success("traitements de patient " + req.params.id, traitements))
     })
