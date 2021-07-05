@@ -24,7 +24,8 @@ function getConseil(req, res) {
 }
 
 function postConseil(req, res) {
-    const conseil = Conseil.create(req.body)
+
+    const conseil = Conseil.create({...req.body, id: undefined, date: undefined })
     Conseil.save(conseil)
     .then(() => {
         res.send(success("conseil cree avec succes", conseil))
