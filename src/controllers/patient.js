@@ -1,4 +1,4 @@
-const { getRepository } = require("typeorm")
+const { getRepository, MoreThanOrEqual, LessThanOrEqual } = require("typeorm")
 const { error, success } = require("../lib/response")
 
 const Patient = getRepository('Patient')
@@ -36,7 +36,7 @@ function getRendezVousPatient(req, res) {
 }
 
 function getTraitementPatient(req, res) {
-    Traitement.find({ idPatient: req.params.id, relations: ["listMedicament"] })
+    Traitement.find({ idPatient: req.params.id, dateFin: MoreThanOrEqual(new Date()), relations: ["listMedicament"] })
     .then(traitements => {
         res.send(success("traitements de patient " + req.params.id, traitements))
     })
