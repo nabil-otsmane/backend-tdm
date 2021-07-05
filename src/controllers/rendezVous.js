@@ -1,5 +1,6 @@
 const { getRepository, MoreThanOrEqual } = require("typeorm")
 const { error, success } = require("../lib/response")
+const fetch = require("node-fetch")
 
 const RendezVous = getRepository('RendezVous')
 
@@ -52,6 +53,28 @@ function postRendezVous(req, res) {
         const rendezVous = RendezVous.create({ idMedecin, idPatient, date })
         RendezVous.save(rendezVous)
         .then(rendezVous => {
+            const topicName = idMedecin;
+            const message = {
+              to: "/topics/"+topicName,
+              notification: {
+                title: 'Vous avez un nouveau rendez-vous',
+                body: 'Un nouveau rendez-vous a été ajouté'
+              },
+            };
+
+            fetch('https://fcm.googleapis.com/fcm/send',{
+              'method' : 'POST',
+              'headers' : {
+                'Authorization' : 'key=AAAAu0xsRec:APA91bHIZswqs2ARLK5sEQOgzLr9ft-dfOEysHexaza3cLwguVkUR3CvuMaqsCCzqGxtQSjeHWFfWpW6-N7kBvF34TX0OJAY2syOweWw7ojmFn7vwifSlX8CdTZt_tS2X98l3v9z398_',
+                'Content-Type' : 'application/json'
+              },
+              'body' : JSON.stringify(message)
+            }
+            ).then(res => res.json()) // expecting a json response
+            .then(json => console.log(json))
+            .catch((err)=>{
+              console.log(err)
+            })
             res.send(success("rendezVous cree avec succes", rendezVous))
         })
         .catch(err => {
